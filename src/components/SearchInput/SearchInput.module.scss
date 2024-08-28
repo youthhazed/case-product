@@ -1,0 +1,40 @@
+.root {
+  position: relative;
+  left: -80px; /* Внешнее смещение всего блока */
+}
+
+.input {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 12px 20px;
+  padding-left: 42px; /* Отступ для иконки поиска */
+  width: 400px;
+  border-radius: 10px;
+  font-size: 16px;
+
+  &:focus {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+
+.search {
+  width: 22px;
+  height: 22px;
+  opacity: 0.3;
+  position: absolute;
+  left: 14px;
+  top: 12px;
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
