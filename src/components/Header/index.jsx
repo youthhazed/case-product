@@ -44,7 +44,7 @@ const Header = ({ searchTerm, onSearchChange, onClearSearch }) => {
                 strokeLinejoin="round"
               />
             </svg>
-            Вход
+            Мои продукты
           </button>
         </div>
       </div>

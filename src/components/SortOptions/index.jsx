@@ -6,8 +6,6 @@ const SortOptions = ({ sortType, onSortChange }) => {
     <div className={styles.sortOptions}>
       <label>Сортировать по:</label>
       <select value={sortType} onChange={(e) => onSortChange(e.target.value)}>
-        <option value="priceAsc">Цене (по возрастанию)</option>
-        <option value="priceDesc">Цене (по убыванию)</option>
         <option value="dateAsc">Дате (по возрастанию)</option>
         <option value="dateDesc">Дате (по убыванию)</option>
       </select>

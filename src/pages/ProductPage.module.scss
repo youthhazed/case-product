@@ -1,0 +1,26 @@
+.card {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.productName {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.productDescription {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.productPrice {
+  color: #00bcff;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -1,12 +1,17 @@
 import React from 'react';
-import Home from './pages/Home.jsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import ProductPage from './pages/ProductPage';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Home />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

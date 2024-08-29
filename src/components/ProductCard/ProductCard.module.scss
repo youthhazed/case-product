@@ -4,7 +4,7 @@
   border-radius: 8px;
   text-align: center;
   transition: transform 0.3s;
-  width: 200px;
+  width: 650px;
   height: 200px;
 
   &:hover {
@@ -14,20 +14,37 @@
 
   .productWrapper {
     padding-top: 30px;
+    padding-right: 300px;
   }
+
+  .productLogo {
+    position: relative;
+
+    top: 80px;
+    right: 250px;
+
+    width: 100px;
+    height: 60px;
+  }
+
   .productName {
     font-size: 18px;
     margin-bottom: 10px;
     color: #000000;
   }
 
-  .productDescription {
-    font-size: 14px;
-    color: #333333;
+  .arrow {
+    position: relative;
+    top: 50px;
+    left: 300px;
+
+    height: 35px;
+    width: 35px;
+
+    color: #00bcff;
   }
 
-  .productPrice {
-    font-size: 16px;
-    color: #00bcff;
+  p {
+    text-decoration: none;
   }
 }
