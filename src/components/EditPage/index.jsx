@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './EditPage.module.scss';
 
 const EditPage = ({ product, onSubmit, onCancel, onDelete }) => {
-  // Проверка на наличие продукта перед инициализацией состояния
   const [productData, setProductData] = useState(
     product || {
       name: '',
@@ -12,6 +11,7 @@ const EditPage = ({ product, onSubmit, onCancel, onDelete }) => {
       serviceLink: '',
     },
   );
+
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
