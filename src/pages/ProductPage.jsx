@@ -2,18 +2,18 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites, selectFavorites } from '../slices/favoritesSlice';
-import { selectProducts } from '../slices/ProductSlice';
+import { selectProducts, deleteProduct } from '../slices/ProductSlice';
 import styles from './ProductPage.module.scss';
 
 const ProductPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // Добавляем хук useNavigate
   const products = useSelector(selectProducts);
   const product = products.find((p) => p.id === parseInt(id));
 
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const isFavorite = favorites.some((fav) => fav.id === product?.id);
+  const navigate = useNavigate();
 
   const handleFavoriteToggle = () => {
     if (isFavorite) {
@@ -23,8 +23,9 @@ const ProductPage = () => {
     }
   };
 
-  const handleBackToHome = () => {
-    navigate('/'); // Возвращаемся на главную страницу
+  const handleDelete = () => {
+    dispatch(deleteProduct({ id: product.id }));
+    navigate('/'); // Возвращаемся на главную страницу после удаления продукта
   };
 
   if (!product) {
@@ -33,27 +34,36 @@ const ProductPage = () => {
 
   return (
     <div className={styles.productPage}>
-      <img src={product.icon} alt={product.name} className={styles.productImage} />
-      <h1 className={styles.productName}>{product.name}</h1>
-      <p className={styles.productDescription}>{product.description}</p>
-      <div className={styles.productDetails}>
-        <p>
-          <strong>Владелец:</strong> {product.owner || 'Неизвестный владелец'}
-        </p>
-        <p>
-          <strong>Дата публикации:</strong> {product.date || 'Не указана'}
-        </p>
-      </div>
-      <div className={styles.buttonContainer}>
-        <a href="#" className={styles.productLink}>
-          Подробнее
-        </a>
-        <button onClick={handleFavoriteToggle} className={styles.favoriteButton}>
-          {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
-        </button>
-        <button onClick={handleBackToHome} className={styles.backButton}>
-          Вернуться на главную
-        </button>
+      <div className={styles.productContainer}>
+        <div className={styles.imageContainer}>
+          <img src={product.icon} alt={product.name} className={styles.productImage} />
+        </div>
+        <div className={styles.detailsContainer}>
+          <h1 className={styles.productName}>{product.name}</h1>
+          <p className={styles.productDescription}>{product.shortDescription}</p>
+          <p className={styles.productFullDescription}>{product.fullDescription}</p>
+          <p>
+            <strong>Владелец:</strong> {product.contacts}
+          </p>
+          <p>
+            <strong>Ссылка на сервис:</strong>{' '}
+            <a href={product.serviceLink}>{product.serviceLink}</a>
+          </p>
+          <div className={styles.buttonContainer}>
+            <button onClick={handleFavoriteToggle} className={styles.favoriteButton}>
+              {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
+            </button>
+            <button onClick={() => navigate(`/edit/${product.id}`)} className={styles.editButton}>
+              Редактировать продукт
+            </button>
+            <button onClick={handleDelete} className={styles.deleteButton}>
+              Удалить продукт
+            </button>
+            <button onClick={() => navigate('/')} className={styles.backButton}>
+              Вернуться на главную
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
