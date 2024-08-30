@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectFavorites } from '../slices/favoritesSlice';
 import ProductCard from '../components/ProductCard';
+import Header from '../components/Header';
 import styles from './FavoritesPage.module.scss';
 
 const FavoritesPage = () => {
@@ -9,6 +10,7 @@ const FavoritesPage = () => {
 
   return (
     <div className={styles.favoritesPage}>
+      <Header />
       <h1>Мои избранные товары</h1>
       {favorites.length === 0 ? (
         <p>У вас нет избранных товаров.</p>

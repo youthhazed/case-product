@@ -9,13 +9,15 @@ const Header = ({ searchTerm, onSearchChange, onClearSearch }) => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.logo}>
-          <img src={logoSvg} alt="Logo" />
-          <div>
-            <h1>Т1-Холдинг</h1>
-            <p>Каталог IT продуктов</p>
+        <Link style={{ textDecoration: 'none' }} to="/">
+          <div className={styles.logo}>
+            <img src={logoSvg} alt="Logo" />
+            <div>
+              <h1>Т1-Холдинг</h1>
+              <p>Каталог IT продуктов</p>
+            </div>
           </div>
-        </div>
+        </Link>
         <SearchInput
           className={styles.search}
           searchTerm={searchTerm}
@@ -23,7 +25,7 @@ const Header = ({ searchTerm, onSearchChange, onClearSearch }) => {
           onClearSearch={onClearSearch}
         />
         <div className={styles.authButton}>
-          <Link to="/favorites">
+          <Link to="/favorites" style={{ textDecoration: 'none' }}>
             <button>
               <svg
                 width="18"
@@ -46,7 +48,7 @@ const Header = ({ searchTerm, onSearchChange, onClearSearch }) => {
                   strokeLinejoin="round"
                 />
               </svg>
-              Мои продукты
+              Избранное
             </button>
           </Link>
         </div>

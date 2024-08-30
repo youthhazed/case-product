@@ -53,6 +53,20 @@
     margin-top: 20px; // Отступ сверху от предыдущего элемента
   }
 
+  .backButton {
+    background-color: #00bcff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #009acd;
+    }
+  }
+
   .productLink {
     padding: 10px 20px;
     font-size: 1rem;

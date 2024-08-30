@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites, selectFavorites } from '../slices/favoritesSlice';
 import { selectProducts } from '../slices/ProductSlice';
@@ -7,6 +7,7 @@ import styles from './ProductPage.module.scss';
 
 const ProductPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // Добавляем хук useNavigate
   const products = useSelector(selectProducts);
   const product = products.find((p) => p.id === parseInt(id));
 
@@ -20,6 +21,10 @@ const ProductPage = () => {
     } else {
       dispatch(addToFavorites(product));
     }
+  };
+
+  const handleBackToHome = () => {
+    navigate('/'); // Возвращаемся на главную страницу
   };
 
   if (!product) {
@@ -45,6 +50,9 @@ const ProductPage = () => {
         </a>
         <button onClick={handleFavoriteToggle} className={styles.favoriteButton}>
           {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
+        </button>
+        <button onClick={handleBackToHome} className={styles.backButton}>
+          Вернуться на главную
         </button>
       </div>
     </div>
